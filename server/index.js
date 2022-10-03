@@ -36,7 +36,7 @@ app.get("/", (req,res) => {
 app.get("/test", (req,res) => {
 
     //this is the code inserting data into database, edit a string and use the db.query() to send the string
-    const sqlInsert = "INSERT INTO tasks (taskName, description) VALUES ('taskname', 'Description test');";
+    const sqlInsert = "INSERT INTO tasks (taskName, description, createDate, dueDate) VALUES ('taskname', 'Description test','2022-10-03','2022-12-03');";
     db.query(sqlInsert, (err, result)=>{
         res.send("task created");
     })
