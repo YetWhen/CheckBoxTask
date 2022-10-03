@@ -19,3 +19,11 @@ o	Status
 -	User should be able to search based on task name (Should have)
 
 need to address the key risk of large volume of task creation within 10s of 1000s.
+
+development operation process:
+frontend:
+go to client folder, run:
+    npm start
+backend:
+split terminal/open new terminal, go to server folder, run:
+    npm run devStart
