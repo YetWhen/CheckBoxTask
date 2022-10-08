@@ -1,13 +1,20 @@
 const express = require('express')
+const bodyParser = require('body-parser')
+const cors = require('cors')
 const app = express()
 const mysql = require('mysql')
-
+const port=3001
 const db = mysql.createPool({
     host: "localhost",
     user: "root",
     password: "password",
     database: "taskdatabase",
 });
+
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.json());
+app.use(cors());
+
 /* testing connection, if sql server not updated, refer to following website
 https://stackoverflow.com/questions/50093144/mysql-8-0-client-does-not-support-authentication-protocol-requested-by-server
 
@@ -32,16 +39,46 @@ app.get("/", (req,res) => {
     res.send("origin route /\n")
 });
 */
-
+app.get("/", (req,res) => {
+  res.send("test");
+});
 app.get("/test", (req,res) => {
 
-    //this is the code inserting data into database, edit a string and use the db.query() to send the string
+    //this is the code inserting data into table "tasks" in database, 
+    //edit a string and use the db.query() to send the string to database instance db
     const sqlInsert = "INSERT INTO tasks (taskName, description, createDate, dueDate) VALUES ('taskname', 'Description test','2022-10-03','2022-12-03');";
     db.query(sqlInsert, (err, result)=>{
         res.send("task created");
     })
 });
 
-app.listen(3001, () => {
+app.get("/api/get", (req,res) => {
+  const sqlSelect = "SELECT * FROM tasks";
+  db.query(sqlSelect, (err, result) => {
+    res.send(result);
+  });
+});
+
+app.post("/api/insert", (req, res)=> {
+  const taskName = req.body.taskName
+  const description = req.body.description
+  const dueDate = req.body.dueDate
+  const d= new Date();
+  var createDate = d.toISOString().split('T')[0];
+  /*
+  if (taskName == ''){
+    res.send("taskName shouldn't be empty");
+  }else if (description == ''){
+    res.send("task description shouldn't be empty");
+  }else if (dueDate == ''){
+    res.send("dueDate shouldn't be empty");
+  }*/
+  const sqlInsert = "INSERT INTO tasks (taskName, description, createDate, dueDate) VALUES (?,?,?,?)"
+  db.query(sqlInsert, [taskName, description, createDate, dueDate], (err, result)=>{
+      console.log("successfully added task: "+ taskName + " to database");
+  });
+});
+
+app.listen(port, () => {
     console.log("running on port 3001");
 });
