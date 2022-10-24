@@ -21,6 +21,15 @@ o	Status
 need to address the key risk of large volume of task creation within 10s of 1000s.
 
 development operation process:
+database:
+go to server index.js
+change the host,user,password,database into correct setting of database workbench
+const db = mysql.createPool({
+    host: "localhost",
+    user: "root",
+    password: "password",
+    database: "taskdatabase",
+});
 frontend:
 go to client folder, run:
     npm start

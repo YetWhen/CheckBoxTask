@@ -42,6 +42,12 @@ app.get("/", (req,res) => {
 app.get("/", (req,res) => {
   res.send("test");
 });
+app.delete("/database/clean",(req,res) => {
+  const sqlTruncate = "TRUNCATE TABLE tasks;"
+  db.query(sqlTruncate, (err,result) => {
+    res.send(result);
+  })
+});
 app.get("/test", (req,res) => {
 
     //this is the code inserting data into table "tasks" in database, 
@@ -63,8 +69,11 @@ app.post("/api/insert", (req, res)=> {
   const taskName = req.body.taskName
   const description = req.body.description
   const dueDate = req.body.dueDate
+  /*
   const d= new Date();
   var createDate = d.toISOString().split('T')[0];
+  */
+  const createDate = req.body.createDate
   /*
   if (taskName == ''){
     res.send("taskName shouldn't be empty");
@@ -79,6 +88,22 @@ app.post("/api/insert", (req, res)=> {
   });
 });
 
+app.delete("/api/delete/:taskid", (req,res)=>{
+  const id = req.params.taskid;
+  const sqlDelete = "DELETE FROM tasks WHERE id = ?";
+  db.query(sqlDelete, id, (err,result) =>{
+      if (err) console.log(err);
+  });
+});
+
+app.put("/api/update", (req, res) => {
+  const id =req.body.id;
+  const description = req.body.description;
+  const sqlUpdate = "UPDATE tasks SET description = ? WHERE id = ?"
+  db.query(sqlUpdate, [description, id], (err, result) => {
+    if (err) console.log(err);
+  });
+});
 app.listen(port, () => {
     console.log("running on port 3001");
 });
