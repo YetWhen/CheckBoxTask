@@ -98,11 +98,28 @@ app.delete("/api/delete/:taskid", (req,res)=>{
 
 app.put("/api/update", (req, res) => {
   const id =req.body.id;
+  const name = req.body.name;
   const description = req.body.description;
-  const sqlUpdate = "UPDATE tasks SET description = ? WHERE id = ?"
-  db.query(sqlUpdate, [description, id], (err, result) => {
-    if (err) console.log(err);
-  });
+  const dueDate = req.body.dueDate;
+  var sqlUpdate = ""
+  if (name != ""){
+    sqlUpdate = "UPDATE tasks SET taskName = ? WHERE id = ?"
+    db.query(sqlUpdate, [name, id], (err, result) => {
+      if (err) console.log(err);
+    });
+  }
+  if (description != ""){
+    sqlUpdate = "UPDATE tasks SET description = ? WHERE id = ?"
+    db.query(sqlUpdate, [description, id], (err, result) => {
+      if (err) console.log(err);
+    });
+  }
+  if (dueDate != ""){
+    sqlUpdate = "UPDATE tasks SET dueDate = ? WHERE id = ?"
+    db.query(sqlUpdate, [dueDate, id], (err, result) => {
+      if (err) console.log(err);
+    });  
+  }
 });
 app.listen(port, () => {
     console.log("running on port 3001");
