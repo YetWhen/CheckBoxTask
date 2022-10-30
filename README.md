@@ -42,7 +42,7 @@ The database should have the following columns and settings
 ![](MySQL_Workbench_setup.png)
 frontend:
 go to client folder, run:
-    'npm start'
+    `npm start`
 
     create task:
         input the information and click "create" button to create task
@@ -62,4 +62,4 @@ go to client folder, run:
 
 backend:
 split terminal/open new terminal, go to server folder, run:
-    npm run devStart
+    `npm run devStart`
