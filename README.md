@@ -32,16 +32,16 @@ const db = mysql.createPool({
     database: "taskdatabase",
 });
 
-The database should have the following columns and settings
-"id" : INT, the id number of data node (row), primary key, not null, auto increment
-"taskName": VARCHAR(200), not null
-"description": TEXT(200), not null
-"createDate": DATE, not null
-"dueDate": DATE, not null
+The database should have the following columns and settings\
+**id** : INT, the id number of data node (row), primary key, not null, auto increment\
+**taskName**: VARCHAR(200), not null\
+**description**: TEXT(200), not null\
+**createDate**: DATE, not null\
+**dueDate**: DATE, not null\
 
 ![](MySQL_Workbench_setup.png)
-frontend:
-go to client folder, run:
+**frontend**:
+go to **client** folder, run:
     `npm start`
 
     create task:
@@ -60,6 +60,6 @@ go to client folder, run:
         if there's multiple tasks with same name, it will return a list of all the tasks with that name
         Searched results also support the sorting feature
 
-backend:
-split terminal/open new terminal, go to server folder, run:
+**backend**:
+split terminal/open new terminal, go to **server** folder, run:
     `npm run devStart`
