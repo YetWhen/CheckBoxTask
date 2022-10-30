@@ -64,6 +64,15 @@ app.get("/api/get", (req,res) => {
     res.send(result);
   });
 });
+app.get("/api/search/:key/:value", (req,res) => {
+  //search the database for a certain data node (row)
+  const key = req.params.key;
+  const value = req.params.value;
+  const sqlSearch = "SELECT * FROM tasks WHERE "+key+" = ?";
+  db.query(sqlSearch,value, (err, result) => {
+    res.send(result);
+  });
+});
 
 app.post("/api/insert", (req, res)=> {
   const taskName = req.body.taskName
