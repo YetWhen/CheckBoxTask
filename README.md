@@ -38,6 +38,7 @@ The database should have the following columns and settings
 "description": TEXT(200), not null
 "createDate": DATE, not null
 "dueDate": DATE, not null
+
 ![](MySQL_Workbench_setup.png)
 frontend:
 go to client folder, run:
