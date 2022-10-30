@@ -63,3 +63,7 @@ go to **client** folder, run:
 **backend**:
 split terminal/open new terminal, go to **server** folder, run:
     `npm run devStart`
+
+the front end webpage http://localhost:3000/ should looks like
+![](front_end_page.png)
+![](task_cards.png)
