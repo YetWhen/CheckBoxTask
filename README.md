@@ -72,7 +72,7 @@ the front end webpage http://localhost:3000/ should looks like
 The high volume task creation will generate the risk of overflow in stack memory. For this risk, I decide to make the task creation dirrectly interact with the backend database. \
 Once submit a task or delete a task, instead of adding a mirror node in frontend tasklist, the client's web page is refreshed to syncronize with database dirrectly. Because considering the multi-user case, previous method may assign wrong task id to frontend task mirror.\
 Meanwhile, the high volume user interaction will decrease the backend's operation speed, therefore, the sorting can be done in the frontend's display list (client's machine). Searching can also be done in frontend tasklist, but I want it to get up-to-date response with database.\
-Further improvements on this issue would be getting and displaying the task lists page by page, getting task rows from database from id 1 to 20, 20 to 40 etc each time, at each page.\
+Further improvements on this issue would be getting and displaying the task lists page by page, getting task rows from database from id 1 to 20, 20 to 40 etc each time, at each page.
 
 **Functionality improvements**:\
 We should add authentication and verification feature to improve the safety of system, such as encoded user-id, passwords and login token.\
@@ -85,5 +85,5 @@ We can make the date input by a drop-down selection box so that there's no expli
 We add a filter feature, which filters the tasks by status, created before/after etc.\
 Keyword searching would be a good way for searching tasks, which search keywords in description.\
 We can add notification feature, notifying by e-mail or web-message.\
-We can add "assign" feature to assign certain task to different user.\
+We can add "assign" feature to assign certain task to different user.
 
