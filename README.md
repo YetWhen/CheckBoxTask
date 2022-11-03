@@ -21,7 +21,7 @@ o	Status
 need to address the key risk of large volume of task creation within 10s of 1000s.
 
 Operation process:
-to setup client folder, use the link below to download the client.zip, extract the client folder, place it in the same level as server folder\
+to setup client folder, use the link below to download the client.zip, extract the client folder (everything in the zip package go into client), place it in the same level as server folder\
 https://drive.google.com/file/d/1z_tmmY8EUbrLu0bC0S_zp2rnMHqQny5z/view?usp=sharing
 \
 database:
